@@ -1,0 +1,27 @@
+﻿<Page x:Class="ZadohinConrol18.PageMain.AddAccountingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ZadohinConrol18.PageMain"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="634"
+      Title="AddAccountingPage">
+
+    <Grid Background="Wheat">
+        <TextBlock HorizontalAlignment="Left" Margin="40,218,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Выберите "/><Run Text="группу"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="40,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Выберите специализацию"/>
+        <ComboBox x:Name="SpecializationCmb" HorizontalAlignment="Left" Margin="40,172,0,0" VerticalAlignment="Top" Width="212" Height="32" SelectionChanged="SpecializationCmb_SelectionChanged"/>
+        <ComboBox x:Name="GroupCmb" HorizontalAlignment="Left" Margin="40,239,0,0" VerticalAlignment="Top" Width="212" Height="32"/>
+        <TextBlock HorizontalAlignment="Left" Margin="291,218,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Выберите "/><Run Text="мероприятие"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="291,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="В"/><Run Text="ыберитее "/><Run Text="направленность"/></TextBlock>
+        <ComboBox x:Name="DirectionsCmb" HorizontalAlignment="Left" Margin="291,172,0,0" VerticalAlignment="Top" Width="231" Height="32" SelectionChanged="DirectionsCmb_SelectionChanged"/>
+        <ComboBox x:Name="ActivityCmb" HorizontalAlignment="Left" Margin="291,239,0,0" VerticalAlignment="Top" Width="231" Height="32"/>
+        <DatePicker Name="DTPicker" HorizontalAlignment="Left" Margin="47,305,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="AddAccountingBtn" Content="Добавить запись" HorizontalAlignment="Left" Margin="398,305,0,0" VerticalAlignment="Top" Width="124" Height="24" Click="AddAccountingBtn_Click"/>
+        <TextBox x:Name="PriceTb" HorizontalAlignment="Left" Height="23" Margin="214,305,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="215,286,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Введите "/><Run Text="балл"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="47,286,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Выберите дату"/>
+
+    </Grid>
+</Page>

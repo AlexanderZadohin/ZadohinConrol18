@@ -1,0 +1,349 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище ZadohinAccountingStudentModel" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AccountingCollege">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idGroup" Type="int" />
+          <Property Name="idActivity" Type="int" />
+          <Property Name="Evaluation" Type="int" />
+          <Property Name="DateEvaluation" Type="date" />
+        </EntityType>
+        <EntityType Name="ActivityStudent">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="idDirections" Type="int" />
+        </EntityType>
+        <EntityType Name="Directions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="GroupStudent">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="idSpecialization" Type="int" />
+        </EntityType>
+        <EntityType Name="Specialization">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_AccountingCollege_ActivityStudent">
+          <End Role="ActivityStudent" Type="Self.ActivityStudent" Multiplicity="0..1" />
+          <End Role="AccountingCollege" Type="Self.AccountingCollege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActivityStudent">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AccountingCollege">
+              <PropertyRef Name="idActivity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccountingCollege_GroupStudent">
+          <End Role="GroupStudent" Type="Self.GroupStudent" Multiplicity="0..1" />
+          <End Role="AccountingCollege" Type="Self.AccountingCollege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupStudent">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AccountingCollege">
+              <PropertyRef Name="idGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActivityStudent_Directions">
+          <End Role="Directions" Type="Self.Directions" Multiplicity="0..1" />
+          <End Role="ActivityStudent" Type="Self.ActivityStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Directions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ActivityStudent">
+              <PropertyRef Name="idDirections" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupStudent_Specialization">
+          <End Role="Specialization" Type="Self.Specialization" Multiplicity="0..1" />
+          <End Role="GroupStudent" Type="Self.GroupStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Specialization">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GroupStudent">
+              <PropertyRef Name="idSpecialization" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ZadohinAccountingStudentModelContainer">
+          <EntitySet Name="AccountingCollege" EntityType="Self.AccountingCollege" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ActivityStudent" EntityType="Self.ActivityStudent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Directions" EntityType="Self.Directions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupStudent" EntityType="Self.GroupStudent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Specialization" EntityType="Self.Specialization" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AccountingCollege_ActivityStudent" Association="Self.FK_AccountingCollege_ActivityStudent">
+            <End Role="ActivityStudent" EntitySet="ActivityStudent" />
+            <End Role="AccountingCollege" EntitySet="AccountingCollege" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccountingCollege_GroupStudent" Association="Self.FK_AccountingCollege_GroupStudent">
+            <End Role="GroupStudent" EntitySet="GroupStudent" />
+            <End Role="AccountingCollege" EntitySet="AccountingCollege" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActivityStudent_Directions" Association="Self.FK_ActivityStudent_Directions">
+            <End Role="Directions" EntitySet="Directions" />
+            <End Role="ActivityStudent" EntitySet="ActivityStudent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupStudent_Specialization" Association="Self.FK_GroupStudent_Specialization">
+            <End Role="Specialization" EntitySet="Specialization" />
+            <End Role="GroupStudent" EntitySet="GroupStudent" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ZadohinAccountingStudentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AccountingCollege">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idGroup" Type="Int32" />
+          <Property Name="idActivity" Type="Int32" />
+          <Property Name="Evaluation" Type="Int32" />
+          <NavigationProperty Name="ActivityStudent" Relationship="Self.FK_AccountingCollege_ActivityStudent" FromRole="AccountingCollege" ToRole="ActivityStudent" />
+          <NavigationProperty Name="GroupStudent" Relationship="Self.FK_AccountingCollege_GroupStudent" FromRole="AccountingCollege" ToRole="GroupStudent" />
+          <Property Name="DateEvaluation" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="ActivityStudent">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="idDirections" Type="Int32" />
+          <NavigationProperty Name="AccountingCollege" Relationship="Self.FK_AccountingCollege_ActivityStudent" FromRole="ActivityStudent" ToRole="AccountingCollege" />
+          <NavigationProperty Name="Directions" Relationship="Self.FK_ActivityStudent_Directions" FromRole="ActivityStudent" ToRole="Directions" />
+        </EntityType>
+        <EntityType Name="Directions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ActivityStudent" Relationship="Self.FK_ActivityStudent_Directions" FromRole="Directions" ToRole="ActivityStudent" />
+        </EntityType>
+        <EntityType Name="GroupStudent">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="idSpecialization" Type="Int32" />
+          <NavigationProperty Name="AccountingCollege" Relationship="Self.FK_AccountingCollege_GroupStudent" FromRole="GroupStudent" ToRole="AccountingCollege" />
+          <NavigationProperty Name="Specialization" Relationship="Self.FK_GroupStudent_Specialization" FromRole="GroupStudent" ToRole="Specialization" />
+        </EntityType>
+        <EntityType Name="Specialization">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GroupStudent" Relationship="Self.FK_GroupStudent_Specialization" FromRole="Specialization" ToRole="GroupStudent" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_AccountingCollege_ActivityStudent">
+          <End Role="ActivityStudent" Type="Self.ActivityStudent" Multiplicity="0..1" />
+          <End Role="AccountingCollege" Type="Self.AccountingCollege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActivityStudent">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AccountingCollege">
+              <PropertyRef Name="idActivity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccountingCollege_GroupStudent">
+          <End Role="GroupStudent" Type="Self.GroupStudent" Multiplicity="0..1" />
+          <End Role="AccountingCollege" Type="Self.AccountingCollege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupStudent">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AccountingCollege">
+              <PropertyRef Name="idGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActivityStudent_Directions">
+          <End Role="Directions" Type="Self.Directions" Multiplicity="0..1" />
+          <End Role="ActivityStudent" Type="Self.ActivityStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Directions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ActivityStudent">
+              <PropertyRef Name="idDirections" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupStudent_Specialization">
+          <End Role="Specialization" Type="Self.Specialization" Multiplicity="0..1" />
+          <End Role="GroupStudent" Type="Self.GroupStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Specialization">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GroupStudent">
+              <PropertyRef Name="idSpecialization" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ZadohinAccountingStudentEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AccountingCollege" EntityType="Self.AccountingCollege" />
+          <EntitySet Name="ActivityStudent" EntityType="Self.ActivityStudent" />
+          <EntitySet Name="Directions" EntityType="Self.Directions" />
+          <EntitySet Name="GroupStudent" EntityType="Self.GroupStudent" />
+          <EntitySet Name="Specialization" EntityType="Self.Specialization" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_AccountingCollege_ActivityStudent" Association="Self.FK_AccountingCollege_ActivityStudent">
+            <End Role="ActivityStudent" EntitySet="ActivityStudent" />
+            <End Role="AccountingCollege" EntitySet="AccountingCollege" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccountingCollege_GroupStudent" Association="Self.FK_AccountingCollege_GroupStudent">
+            <End Role="GroupStudent" EntitySet="GroupStudent" />
+            <End Role="AccountingCollege" EntitySet="AccountingCollege" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActivityStudent_Directions" Association="Self.FK_ActivityStudent_Directions">
+            <End Role="Directions" EntitySet="Directions" />
+            <End Role="ActivityStudent" EntitySet="ActivityStudent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupStudent_Specialization" Association="Self.FK_GroupStudent_Specialization">
+            <End Role="Specialization" EntitySet="Specialization" />
+            <End Role="GroupStudent" EntitySet="GroupStudent" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ZadohinAccountingStudentModelContainer" CdmEntityContainer="ZadohinAccountingStudentEntities">
+          <EntitySetMapping Name="AccountingCollege">
+            <EntityTypeMapping TypeName="ZadohinAccountingStudentModel.AccountingCollege">
+              <MappingFragment StoreEntitySet="AccountingCollege">
+                <ScalarProperty Name="DateEvaluation" ColumnName="DateEvaluation" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idGroup" ColumnName="idGroup" />
+                <ScalarProperty Name="idActivity" ColumnName="idActivity" />
+                <ScalarProperty Name="Evaluation" ColumnName="Evaluation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActivityStudent">
+            <EntityTypeMapping TypeName="ZadohinAccountingStudentModel.ActivityStudent">
+              <MappingFragment StoreEntitySet="ActivityStudent">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="idDirections" ColumnName="idDirections" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Directions">
+            <EntityTypeMapping TypeName="ZadohinAccountingStudentModel.Directions">
+              <MappingFragment StoreEntitySet="Directions">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupStudent">
+            <EntityTypeMapping TypeName="ZadohinAccountingStudentModel.GroupStudent">
+              <MappingFragment StoreEntitySet="GroupStudent">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="idSpecialization" ColumnName="idSpecialization" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Specialization">
+            <EntityTypeMapping TypeName="ZadohinAccountingStudentModel.Specialization">
+              <MappingFragment StoreEntitySet="Specialization">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ZadohinAccountingStudentModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
