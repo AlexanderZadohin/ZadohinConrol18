@@ -119,6 +119,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AccountingStudentModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\AccountingView.cs">
+      <DependentUpon>AccountingStudentModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\ActivityStudent.cs">
       <DependentUpon>AccountingStudentModel.tt</DependentUpon>
     </Compile>
@@ -132,6 +135,9 @@
       <DependentUpon>AccountingStudentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\sysdiagrams.cs">
+      <DependentUpon>AccountingStudentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\View_2.cs">
       <DependentUpon>AccountingStudentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PageMain\AccountingStudent.xaml.cs">
@@ -192,21 +198,20 @@
     <Resource Include="Resources\IMG_8699.JPG" />
     <Resource Include="Resources\Статья 1,2.JPG" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Model\AccountingStudentModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>AccountingStudentModel.Context.cs</LastGenOutput>
       <DependentUpon>AccountingStudentModel.edmx</DependentUpon>
+      <LastGenOutput>AccountingStudentModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Model\AccountingStudentModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>AccountingStudentModel.edmx</DependentUpon>
       <LastGenOutput>AccountingStudentModel.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

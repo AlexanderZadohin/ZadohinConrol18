@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="634"
       Title="AddAccountingPage">
 
-    <Grid Background="Wheat">
+    <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="40,218,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Выберите "/><Run Text="группу"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="40,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Выберите специализацию"/>
         <ComboBox x:Name="SpecializationCmb" HorizontalAlignment="Left" Margin="40,172,0,0" VerticalAlignment="Top" Width="212" Height="32" SelectionChanged="SpecializationCmb_SelectionChanged"/>

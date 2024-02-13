@@ -31,5 +31,7 @@ namespace ZadohinConrol18.Model
         public DbSet<GroupStudent> GroupStudent { get; set; }
         public DbSet<Specialization> Specialization { get; set; }
         public DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public DbSet<AccountingView> AccountingView { get; set; }
+        public DbSet<View_2> View_2 { get; set; }
     }
 }

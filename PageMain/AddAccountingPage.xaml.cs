@@ -43,17 +43,6 @@ namespace ZadohinConrol18.PageMain
             SpecializationCmb.ItemsSource = App.context.Specialization.ToList();
         }
 
-        private void SpecializationCmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            int selectedSP = Convert.ToInt32(SpecializationCmb.SelectedValue);
-            GroupCmb.ItemsSource = App.context.GroupStudent.Where(g => g.idSpecialization == selectedSP);
-        }
-
-        private void DirectionsCmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            int selectedDR = Convert.ToInt32(DirectionsCmb.SelectedValue);
-            ActivityCmb.ItemsSource = App.context.ActivityStudent.Where(g => g.idDirections == selectedDR);
-        }
 
         private void AddAccountingBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -69,7 +58,7 @@ namespace ZadohinConrol18.PageMain
             if (string.IsNullOrWhiteSpace(DTPicker.Text))
                 mes += "Выберите Дату\n";
             if (string.IsNullOrWhiteSpace(PriceTb.Text))
-                mes += "Введите цену работы\n";
+                mes += "Введите балл\n";
             if (mes != "")
             {
                 MessageBox.Show(mes);
@@ -94,6 +83,18 @@ namespace ZadohinConrol18.PageMain
             GroupCmb.Text = "";
             SpecializationCmb.Text = "";
 
+        }
+
+        private void SpecializationCmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int selectedSP = Convert.ToInt32(SpecializationCmb.SelectedValue);
+            GroupCmb.ItemsSource = App.context.GroupStudent.Where(g => g.Specialization.id == selectedSP).ToList();
+        }
+
+        private void DirectionsCmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int selectedDR = Convert.ToInt32(DirectionsCmb.SelectedValue);
+            ActivityCmb.ItemsSource = App.context.ActivityStudent.Where(g => g.Directions.id == selectedDR).ToList();
         }
     }
 }
