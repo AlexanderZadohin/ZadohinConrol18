@@ -10,11 +10,12 @@
 
     <Grid>
         <Grid>
-            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 100" Width="150">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="4,100,4,0" Width="150" Height="274">
                 <Button x:Name="AddGroupBtn" Width="125" Height="35" Margin="10 10 10 10" FontSize="10" Content="Добавить группу" Click="AddGroupBtn_Click"/>
                 <Button x:Name="AddActivityBtn" Width="125" Height="35" Margin="10 10 10 10" FontSize="10" Content="Добавить меропритияе" Click="AddActivityBtn_Click"/>
                 <Button x:Name="AccountingBtn" Width="125" Height="35" Margin="10 10 10 10" FontSize="10" Content="Отчет по студентам" Click="AccountingBtn_Click"/>
                 <Button x:Name="AddAccountingBtn" Width="125" Height="35" Margin="10 10 10 10" FontSize="10" Content="Учет" Click="AddAccountingBtn_Click"/>
+                <Button x:Name="SecAccountingBtn" Width="125" Height="35" Margin="12,10" FontSize="10" Content="Отчет 2" Click="SecAccountingBtn_Click"/>
             </StackPanel>
         </Grid>
     </Grid>

@@ -45,5 +45,10 @@ namespace ZadohinConrol18.PageMain
         {
             ClassFrame.FrameBody.Navigate(new PageMain.AddAccountingPage());
         }
+
+        private void SecAccountingBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ClassFrame.FrameBody.Navigate(new PageMain.ReportPage());
+        }
     }
 }
